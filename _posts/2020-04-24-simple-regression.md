@@ -56,8 +56,12 @@ $$
 $$
 \color{#2a8eba}{
 \begin{eqnarray*}
+\left
+\{\begin{array}{l}
     -\frac{2}{N}\sum_{i=1}^N x_i (y_i - a x_i - b) = 0 \\
     -\frac{2}{N}\sum_{i=1}^N (y_i - a x_i - b) = 0 \\
+\end{array}
+\right.
 \end{eqnarray*}
 }
 $$
@@ -67,9 +71,13 @@ $$
 $$
 \color{#2a8eba}{
 \begin{eqnarray}
+\left
+\{\begin{array}{l}
 \label{eqn:leq}
     \sum_{i=1}^N x_i y_i - a \sum_{i=1}^N x_i x_i - b\sum_{i=1}^N x_i = 0 \\
     \sum_{i=1}^N y_i - a \sum_{i=1}^N x_i - b\sum_{i=1}^N 1 = 0
+\end{array}
+\right.
 \end{eqnarray}
 }
 $$
@@ -118,7 +126,7 @@ $$
 $$
 \color{#2a8eba}{
 \begin{eqnarray*}
-a & = &\frac{CD-NA}{C^2-NB} = \frac{ \sum_{i=1}^N x_i \sum_{i=1}^N y_i - N  \sum_{i=1}^N x_i y_I}{(\sum_{i=1}^N x_i)^2 - N  \sum_{i=1}^N x_i^2} \\
+a & = &\frac{CD-NA}{C^2-NB} = \frac{ \sum_{i=1}^N x_i \sum_{i=1}^N y_i - N  \sum_{i=1}^N x_i y_i}{(\sum_{i=1}^N x_i)^2 - N  \sum_{i=1}^N x_i^2} \\
 b & = & \frac{AC-BD}{C^2 - NB} = \frac{\sum_{i=1}^N x_i \sum_{i=1}^N x_i y_i - \sum_{i=1}^N x_i^2  \sum_{i=1}^N y_i}{(\sum_{i=1}^N x_i)^2 - N  \sum_{i=1}^N x_i^2}
 \end{eqnarray*}
 }
