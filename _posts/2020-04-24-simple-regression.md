@@ -4,28 +4,29 @@ title: "単回帰モデル"
 description: Simple Regression, Univariate Regression
 tags: 機械学習 回帰モデル
 ---
+<span style="font-family:Sawarabi Gothic;">
 
-基本中の基本である単回帰モデルについて復習したいと思います。
 
-## 単回帰モデル[^1]
+　基本中の基本である単回帰モデルについて復習したいと思います。単回帰モデルは2変数の関係を特定するためのモデルです。例えば、身長を体重の関係を説明したい時などに適応できます。
 
-　あるデータセット$\color{#2a8eba}{\mathcal{D}=\{(x_1, y_1), (x_2, y_2), ..., (x_N, y_N)\}}$が与えられ、$\color{#2a8eba}{y=ax+b}$のモデルで表現する場合、このモデルを**単回帰モデル**(simple regression)と言います。与えられたデータを最もよく表すモデルとはなんでしょうか？ここでは作成されたモデルとデータセットの誤差が小さい場合、そのモデルを良いモデルだと考えます。数式で表すと
+## 単回帰モデルの解
+　あるデータセット$\color{#1F618D}{\mathcal{D}=\{(x_1, y_1), (x_2, y_2), ..., (x_N, y_N)\}}$が与えられ、$\color{#1F618D}{y=ax+b}$のモデルで表現する場合、このモデルを<span style="color:#148F77; font-family:Sawarabi Mincho;">単回帰モデル(simple regression)</span>と言います。数式からわかるように、二つのパラメータ$\color{#1F618D}{a}$と$\color{#1F618D}{b}$で$\color{#1F618D}{y}$を表現します。このパラメータを<span style="color:#148F77; font-family:Sawarabi Mincho;">回帰係数(regression coefficient)</span>と呼びます。パラメータを用いるモデルのことを<span style="color:#148F77; font-family:Sawarabi Mincho;">パラメトリックモデル(parametric model)</span>といいます。ところで、与えられたデータを最もよく表すモデルとはなんでしょうか？ここでは作成されたモデルとデータセットの誤差(残差: residual)を最小にするモデルを良いモデルだと考えます。そのために二乗誤差を最小にするパラメータを求めます(<span style="color:#148F77; font-family:Sawarabi Mincho;">最小二乗法(least-squares method)</span>)。数式で表すと
 
 $$
-\color{#2a8eba}{
+\color{#1F618D}{
 \begin{eqnarray*}
     \hat{y_1} = a x_1 + b \\
-    ERR = y_1 - \hat y_1
+    \varepsilon_1 = y_1 - \hat y_1
 \end{eqnarray*}
 }
 $$
 
-上記のような誤差(err)の場合、符合に作用されてしまうので、微分しやすいように二乗誤差が用いられます。
+上記のままでは、符合に作用されてしまうので、微分しやすいように二乗誤差が用いられます。
 
 $$
-\color{#2a8eba}{
+\color{#1F618D}{
 \begin{eqnarray*}
-    ERR_i = (y_1 - y)^2
+    \varepsilon_i = (y_1 - y)^2
 \end{eqnarray*}
 }
 $$
@@ -33,21 +34,21 @@ $$
 さらに得られたデータで和や平均を取ると、誤差は以下のようになります。
 
 $$
-\color{#2a8eba}{
+\color{#1F618D}{
 \begin{eqnarray*}
-    ERR_{total} = \sum_{i=1}^N (y_i - \hat y_i)^2 \\
-    ERR_{mean} = \frac{1}{N}\sum_{i=1}^N (y_i - \hat y_i)^2
+    \varepsilon_{total} = \sum_{i=1}^N (y_i - \hat y_i)^2 \\
+    \varepsilon_{mean} = \frac{1}{N}\sum_{i=1}^N (y_i - \hat y_i)^2
 \end{eqnarray*}
 }
 $$
 
-上記の$\color{#2a8eba}{ERR_{mean}}$を$\color{#2a8eba}{a}$と$\color{#2a8eba}{b}$で微分すると以下の式を得ます。
+上記の$\color{#1F618D}{\varepsilon_{mean}}$を$\color{#1F618D}{a}$と$\color{#1F618D}{b}$で微分すると以下の式を得ます。
 
 $$
-\color{#2a8eba}{
+\color{#1F618D}{
 \begin{eqnarray*}
-    \frac{\partial ERR_{mean}}{\partial a} = -\frac{2}{N}\sum_{i=1}^N x_i (y_i - a x_i - b) \\
-    \frac{\partial ERR_{mean}}{\partial b} = -\frac{2}{N}\sum_{i=1}^N (y_i - a x_i - b) \\
+    \frac{\partial \varepsilon_{mean}}{\partial a} = -\frac{2}{N}\sum_{i=1}^N x_i (y_i - a x_i - b) \\
+    \frac{\partial \varepsilon_{mean}}{\partial b} = -\frac{2}{N}\sum_{i=1}^N (y_i - a x_i - b) \\
 \end{eqnarray*}
 }
 $$
@@ -55,7 +56,7 @@ $$
 誤差を最小化するために、それらの微分値を0とすると、以下の方程式を解くことになる。
 
 $$
-\color{#2a8eba}{
+\color{#1F618D}{
 \begin{eqnarray*}
 \left
 \{\begin{array}{l}
@@ -70,7 +71,7 @@ $$
 これを解くと
 
 $$
-\color{#2a8eba}{
+\color{#1F618D}{
 \begin{eqnarray}
 \left
 \{\begin{array}{l}
@@ -83,10 +84,10 @@ $$
 }
 $$
 
-ここで、それぞれのシグマ記号をただの記号だと考えると、$\color{#2a8eba}{a}$と$\color{#2a8eba}{b}$の連立方程式を解くことになります。手元でちょこちょこ計算すると
+ここで、それぞれのシグマ記号をただの記号だと考えると、$\color{#1F618D}{a}$と$\color{#1F618D}{b}$の連立方程式を解くことになります。手元でちょこちょこ計算すると
 
 $$
-\color{#2a8eba}{
+\color{#1F618D}{
 \begin{eqnarray}
 \left
 \{\begin{array}{l}
@@ -104,7 +105,7 @@ $$
 さらに当たり前ですが、
 
 $$
-\color{#2a8eba}{
+\color{#1F618D}{
 \begin{eqnarray} \label{eqn:n}
     \sum_{i=1}^N 1 = N
 \end{eqnarray}
@@ -114,7 +115,7 @@ $$
 上記を展開すると、$\ref{eqn:abcd}$、$\ref{eqn:n}$を$\ref{eqn:leq}$に代入すると、
 
 $$
-\color{#2a8eba}{
+\color{#1F618D}{
 \begin{eqnarray*}
     A - a B - b C = 0 \\
     D - a C - b N = 0
@@ -122,10 +123,10 @@ $$
 }
 $$
 
-あとは普通のよくみる連立方程式なので
+あとは普通によくみる連立方程式なので解くだけです。
 
 $$
-\color{#2a8eba}{
+\color{#1F618D}{
 \begin{eqnarray*}
 a & = &\frac{CD-NA}{C^2-NB} = \frac{ \sum_{i=1}^N x_i \sum_{i=1}^N y_i - N  \sum_{i=1}^N x_i y_i}{(\sum_{i=1}^N x_i)^2 - N  \sum_{i=1}^N x_i^2} \\
 b & = & \frac{AC-BD}{C^2 - NB} = \frac{\sum_{i=1}^N x_i \sum_{i=1}^N x_i y_i - \sum_{i=1}^N x_i^2  \sum_{i=1}^N y_i}{(\sum_{i=1}^N x_i)^2 - N  \sum_{i=1}^N x_i^2}
@@ -133,15 +134,35 @@ b & = & \frac{AC-BD}{C^2 - NB} = \frac{\sum_{i=1}^N x_i \sum_{i=1}^N x_i y_i - \
 }
 $$
 
-Rustのコードで表すと{% cite ruby %}
+## 単回帰モデルの中心化と正規化
+
+<span style="color:#148F77; font-family:Sawarabi Mincho;">中心化(zero-center)</span>と<span style="color:#148F77; font-family:Sawarabi Mincho;">正規化(normalize)</span>をすると単回帰モデルの解はどうなるでしょうか？式を整理するために、記号を以下のように定義します。
+
+$$
+\color{#1F618D}{
+\begin{eqnarray*}
+a & = &\frac{CD-NA}{C^2-NB} = \frac{ \sum_{i=1}^N x_i \sum_{i=1}^N y_i - N  \sum_{i=1}^N x_i y_i}{(\sum_{i=1}^N x_i)^2 - N  \sum_{i=1}^N x_i^2} \\
+b & = & \frac{AC-BD}{C^2 - NB} = \frac{\sum_{i=1}^N x_i \sum_{i=1}^N x_i y_i - \sum_{i=1}^N x_i^2  \sum_{i=1}^N y_i}{(\sum_{i=1}^N x_i)^2 - N  \sum_{i=1}^N x_i^2}
+\end{eqnarray*}
+}
+$$
+
+## 単回帰モデルの統計検定
+
+Rustのコードで表すと
 ```rust
-    let x = vec![1, 2, 3, 4, 5];
-    let y = vec![10, 11, 13, 15, 18];
+let x = vec![1, 2, 3, 4, 5];
+let y = vec![10, 11, 13, 15, 18];
 ```
 
+
+---
+## 参考文献
+
+* [機械学習](https://www.amazon.co.jp/dp/4254122187/)
+* [ガウス過程と機械学習](https://www.amazon.co.jp/dp/B07QMMJJV8/)
+* [An Introduction to Statistical Learning](https://www.amazon.co.jp/dp/1461471370/)
+* [データはここから拝借](https://www.e-stat.go.jp/)
+
 ----
-[^1]: 基本的には線形モデルの説明から入る本が多いようです。
-
-
-
-{% bibliography %}
+[^1]: hoge

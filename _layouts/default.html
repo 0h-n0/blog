@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="{{ page.lang | default: site.lang | default: "en" }}">
+<html lang="{{ page.lang | default: site.lang | default: "ja" }}">
 
 <head>
 
@@ -46,12 +46,11 @@
 
     <!-- <link rel="alternate" media="only screen and (max-width: 640px)" href="">
         <link rel="alternate" media="handheld" href=""> -->
-
-
         <link rel="stylesheet" href="{{ '/assets/css/style.css?v=' | append: site.github.build_revision | absolute_url }}">
-        <link href="https://fonts.googleapis.com/css?family=Sawarabi+Mincho" rel="stylesheet">
         {% include mathjax-v3.html %}
-    </head>
+        <link href="https://fonts.googleapis.com/css?family=Sawarabi+Mincho" rel="stylesheet">
+</head>
+
     <body>
 
         {% include site-header.html %}
