@@ -136,16 +136,42 @@ $$
 
 ## 単回帰モデルの中心化と正規化
 
-<span style="color:#148F77; font-family:Sawarabi Mincho;">中心化(zero-center)</span>と<span style="color:#148F77; font-family:Sawarabi Mincho;">正規化(normalize)</span>をすると単回帰モデルの解はどうなるでしょうか？式を整理するために、記号を以下のように定義します。
+<span style="color:#148F77; font-family:Sawarabi Mincho;">中心化(zero-center)</span>と<span style="color:#148F77; font-family:Sawarabi Mincho;">正規化(normalize)</span>をすると単回帰モデルの解はどうなるでしょうか？式を整理するために、まず分散と共分散を以下のように定義します。
 
 $$
 \color{#1F618D}{
 \begin{eqnarray*}
-a & = &\frac{CD-NA}{C^2-NB} = \frac{ \sum_{i=1}^N x_i \sum_{i=1}^N y_i - N  \sum_{i=1}^N x_i y_i}{(\sum_{i=1}^N x_i)^2 - N  \sum_{i=1}^N x_i^2} \\
-b & = & \frac{AC-BD}{C^2 - NB} = \frac{\sum_{i=1}^N x_i \sum_{i=1}^N x_i y_i - \sum_{i=1}^N x_i^2  \sum_{i=1}^N y_i}{(\sum_{i=1}^N x_i)^2 - N  \sum_{i=1}^N x_i^2}
+\sigma_x & = & \frac{1}{N} \sum_{i=1}^N x_i^2 - \left(\frac{1}{N}\sum_{i=1}^N x_i \right)^2  \\
+\sigma_{xy} & = & \frac{1}{N}\sum_{i=1}^N x_i y_i - \frac{1}{N}\sum_{i=1}^N x_i \frac{1}{N}\sum_{i=1}^N y_i
 \end{eqnarray*}
 }
 $$
+
+さて上記を解の方程式に代入すると
+
+$$
+\color{#1F618D}{
+\begin{eqnarray*}
+a & = & \frac{\sum_{i=1}^N x_i \sum_{i=1}^N y_i - N  \sum_{i=1}^N x_i y_i}{(\sum_{i=1}^N x_i)^2 - N  \sum_{i=1}^N x_i^2} = \frac{\sigma_{xy}}{\sigma_x}\\
+b & = & \frac{\sum_{i=1}^N x_i \sum_{i=1}^N x_i y_i - \sum_{i=1}^N x_i^2  \sum_{i=1}^N y_i}{(\sum_{i=1}^N x_i)^2 - N  \sum_{i=1}^N x_i^2} = \frac{\sum_{i=1}^N x_i\sigma_{xy}}{\sigma_x}\\
+\end{eqnarray*}
+}
+$$
+
+ここで、$x'=\frac{x}{\sigma_x}$とすると、
+
+$$
+\color{#1F618D}{
+\begin{eqnarray*}
+a & = & \sigma_{x'y}\\
+b & = & \sum_{i=1}^N x_i\sigma_{x'y}\\
+\end{eqnarray*}
+}
+$$
+
+ここで最小二乗法を思い出すと、$\color{#1F618D}{a}$と$\color{#1F618D}{b}$を最小化することは$\color{#1F618D}{\sigma_{x'}}$を最小化していることにつながります。
+
+
 
 ## 単回帰モデルの統計検定
 
