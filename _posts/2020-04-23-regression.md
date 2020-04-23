@@ -19,7 +19,7 @@ $$
 $$
 
 $$
-\bl{
+\mycolor{
 \begin{eqnarray*}
     \hat{y_1} = a x_1 + b \\
     ERR = y_1 - \hat y_1
