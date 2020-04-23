@@ -2,4 +2,4 @@
 layout: home
 ---
 
-このサイトは0h-n0のブログです。機械学種、Rust、創薬に関することをまとめていきます。CVについては[About]({{ '/about.html' | absolute_url }})に軽く記載しております。
+このサイトは0h-n0のブログです。主に、機械学習、Rust、創薬に関わることをポストしています。簡単なCVは[About]({{ '/about.html' | absolute_url }})に記載していますので、気になる方はご覧ください。
