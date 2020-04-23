@@ -1,5 +1,5 @@
-title: Cayman Blog Theme
-description: Cayman Blog Theme is a clean, responsive blogging theme for Jekyll and Gitlab/GitHub Pages.
+title: 0h-n0 Blog
+description: Machine Learning & Rust & Drug Discovery
 show_downloads: true
 
 baseurl: "/blog" # change this to the subpath of your site, e.g. /blog. Leave it empty if you don't need it.
@@ -16,10 +16,10 @@ cayman-blog:
 theme: # leave it empty
 
 # social
-author: lorepirri
+author: 0h-n0
 image: /thumbnail-jumbo.png
 twitter:
-  username: lorepirri
+  username: 0h-n0
 
 plugins:
   - jekyll-target-blank

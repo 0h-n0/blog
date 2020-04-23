@@ -9,10 +9,14 @@ order: 0
 
 Machine Learning Engineer @Kyoto, Japan
 
-* `2012~2017`: Phd student (Biophysics)
-* `2017~2018`: Asistant engineer in ASR.
-* `2018~`: Machine Leanring engineer
-
+<dl>
+<dt>2012~2017</dt>
+<dd>Phd student (Biophysics)</dd>
+<dt>2017~2018</dt>
+<dd>Asistant engineer (ASR)</dd>
+<dt>2018~</dt>
+<dd>Machine Learning engineer</dd>
+</dl>
 
 
 
