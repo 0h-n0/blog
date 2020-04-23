@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "単回帰モデル(Simple Regression)"
+description: Simple Regression, Univariate Regression
 tags: 機械学習 回帰モデル
 ---
 
@@ -138,5 +139,5 @@ Rustのコードで表すと
     let y = vec![10, 11, 13, 15, 18];
 ```
 
-
-[^1]: どこでも書いています。
+----
+[^1]: 基本的には線形モデルの説明から入る本が多いようです。
