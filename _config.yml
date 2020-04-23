@@ -1,40 +1,30 @@
-title:          Speed matters blog
-description:    A blog about writing fast Python code
-author: Marty B.
-author_email: mrbm74@gmail.com
-
-markdown:       kramdown
-
-highlighter:    rouge
-
-# Use of `relative_permalinks` ensures post links from the index work properly.
-permalink:      pretty
-
+title: Cayman Blog Theme
+description: Cayman Blog Theme is a clean, responsive blogging theme for Jekyll and Gitlab/GitHub Pages.
 show_downloads: true
 
-url:            https://brmmm3.github.io
-paginate:       1
-baseurl:        /
-
-# Assets
-#
-# We specify the directory for Jekyll so we can use @imports.
-sass:
-  sass_dir:     _sass
-  style:        :compressed
+baseurl: "/cayman-blog" # change this to the subpath of your site, e.g. /blog. Leave it empty if you don't need it.
+url: "https://lorepirri.github.io" # change this to the base hostname & protocol for your site
 
 
-blog:
-  date_format: "%-d %b %Y"
+google_analytics:
+
+# cayman-blog date format
+# refer to http://shopify.github.io/liquid/filters/date/ if you want to customize this
+cayman-blog:
+  date_format: "%b %-d, %Y"
 
 theme: # leave it empty
 
-highlighter: rouge
-
-kramdown:
-  syntax_highlighter: rouge
+# social
+author: lorepirri
+image: /thumbnail-jumbo.png
+twitter:
+  username: lorepirri
 
 plugins:
-  - rouge
-  - jekyll-feed
-  - jekyll-paginate
+  - jekyll-target-blank
+
+target-blank:
+    rel: nofollow
+
+header_page_refs: ['now', 'about', 'contact']

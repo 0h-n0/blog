@@ -1,20 +1,17 @@
 ---
+#
+# Here you can change the text shown in the Home page before the Latest Posts section.
+#
+# Edit cayman-blog's home layout in _layouts instead if you wanna make some changes
+# See: https://jekyllrb.com/docs/themes/#overriding-theme-defaults
+#
 layout: home
 ---
-In the past I've coded in a lot of different programming languages, like C, C++, Java, Assembler, etc.
-But a view years ago I got in contact with Python. First I disliked it to have no brackets at the
-block boundaries. This was because it was so uncommon to me and I made the typical beginner mistakes:
-Mixing spaces and tabs.
-But with time I've learned to avoid the common mistakes and I've learned to love Python.
-The more I've coded in Python the more I've learned how powerful this programming language is and
-the more I fell in love with it ;-)
 
-Although Python is extremely powerful it has besides the (in-)famous GIL a drawback:
-Python is relatively slow compared to other programming languages. But fortunately you are not lost
-in space. There are several more or less easy and powerful ways to make the Python code (really) fast.
+Cayman Blog Theme is a clean, responsive blogging theme for Jekyll. It is inspired by the Cayman Theme for Github Pages, which can be greatly used for single projects but not as blogging platform.
 
-In this blog I want to provide some tips and present some modules and code snippets for writing fast
-programs in Python.
+This theme has instead all you need to start today blogging with Jekyll, and no effort: pages, posts, few social buttons. Try loading this on mobile too.
 
-I hope you enjoy it :-)
+Have a look at the Github page for more information.
 
+You find this descriptive text in the `index.md` file, so you can change it, or remove it completely, according to your needs.
