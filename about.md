@@ -7,9 +7,13 @@ ref: about
 order: 0
 ---
 
-This is the _Cayman Blog_ Jekyll theme. You can find out more info about customizing this theme, as well as basic usage documentation, and source code at: [cayman-blog](https://github.com/lorepirri/cayman-blog)
+Machine Learning Engineer @Kyoto, Japan
 
-You can find the source code for _Jekyll_ at [jekyll](https://github.com/jekyll/jekyll)
+* `2012~2017`: Phd student (Biophysics)
+* `2017~2018`: Asistant engineer in ASR.
+* `2018~`: Machine Leanring engineer
+
+
 
 
 [Go to the Home Page]({{ '/' | absolute_url }})
