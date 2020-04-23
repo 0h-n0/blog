@@ -1,43 +1,20 @@
-## Welcome to GitHub Pages
+---
+layout: home
+---
+In the past I've coded in a lot of different programming languages, like C, C++, Java, Assembler, etc.
+But a view years ago I got in contact with Python. First I disliked it to have no brackets at the
+block boundaries. This was because it was so uncommon to me and I made the typical beginner mistakes:
+Mixing spaces and tabs.
+But with time I've learned to avoid the common mistakes and I've learned to love Python.
+The more I've coded in Python the more I've learned how powerful this programming language is and
+the more I fell in love with it ;-)
 
-You can use the [editor on GitHub](https://github.com/0h-n0/blog/edit/master/index.md) to maintain and preview the content for your website in Markdown files.
+Although Python is extremely powerful it has besides the (in-)famous GIL a drawback:
+Python is relatively slow compared to other programming languages. But fortunately you are not lost
+in space. There are several more or less easy and powerful ways to make the Python code (really) fast.
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+In this blog I want to provide some tips and present some modules and code snippets for writing fast
+programs in Python.
 
-### Markdown
+I hope you enjoy it :-)
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
-
-
-```math
-f(x) = \frac{1}{2}
-```
-
-
-```markdown
-Syntax highlighted code block
-
-# Header 1
-## Header 2
-### Header 3
-
-- Bulleted
-- List
-
-1. Numbered
-2. List
-
-**Bold** and _Italic_ and `Code` text
-
-[Link](url) and ![Image](src)
-```
-
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
-
-### Jekyll Themes
-
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/0h-n0/blog/settings). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
-
-### Support or Contact
-
-Having trouble with Pages? Check out our [documentation](https://help.github.com/categories/github-pages-basics/) or [contact support](https://github.com/contact) and we’ll help you sort it out.

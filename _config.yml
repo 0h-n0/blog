@@ -1,11 +1,40 @@
-theme: jekyll-theme-cayman
-lsi: false
-safe: true
-source: [your repo's top level directory]
-incremental: false
+title:          Speed matters blog
+description:    A blog about writing fast Python code
+author: Marty B.
+author_email: mrbm74@gmail.com
+
+markdown:       kramdown
+
+highlighter:    rouge
+
+# Use of `relative_permalinks` ensures post links from the index work properly.
+permalink:      pretty
+
+show_downloads: true
+
+url:            https://brmmm3.github.io
+paginate:       1
+baseurl:        /
+
+# Assets
+#
+# We specify the directory for Jekyll so we can use @imports.
+sass:
+  sass_dir:     _sass
+  style:        :compressed
+
+
+blog:
+  date_format: "%-d %b %Y"
+
+theme: # leave it empty
+
 highlighter: rouge
-gist:
-  noscript: false
+
 kramdown:
-  math_engine: mathjax
   syntax_highlighter: rouge
+
+plugins:
+  - rouge
+  - jekyll-feed
+  - jekyll-paginate
