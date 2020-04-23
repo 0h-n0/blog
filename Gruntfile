@@ -1,0 +1,24 @@
+module.exports = function(grunt) {
+  var pkg = require('./package.json');
+  // Various Grunt tasks...
+
+  grunt.initConfig({
+      buildcontrol: {
+          pages: {
+              options: {
+                  remote: 'git@github.com:0h-n0/blog.git',
+                  branch: 'master'
+              }
+          },
+          local: {
+              options: {
+                  remote: '../',
+                  branch: 'build'
+              }
+          }
+      }
+  });
+    grunt.registerTask('build', [
+    // Collection of tasks that build code to the 'dist' directory...
+    ]);
+};
