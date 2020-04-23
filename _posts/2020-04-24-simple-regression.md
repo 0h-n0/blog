@@ -133,7 +133,7 @@ b & = & \frac{AC-BD}{C^2 - NB} = \frac{\sum_{i=1}^N x_i \sum_{i=1}^N x_i y_i - \
 }
 $$
 
-Rustのコードで表すと
+Rustのコードで表すと{% cite ruby %}
 ```rust
     let x = vec![1, 2, 3, 4, 5];
     let y = vec![10, 11, 13, 15, 18];
@@ -142,6 +142,6 @@ Rustのコードで表すと
 ----
 [^1]: 基本的には線形モデルの説明から入る本が多いようです。
 
-{% reference ruby %}
+
 
 {% bibliography %}
