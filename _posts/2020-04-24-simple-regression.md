@@ -121,6 +121,7 @@ $$
 a & = &\frac{CD-NA}{C^2-NB} = \frac{ \sum_{i=1}^N x_i \sum_{i=1}^N y_i - N  \sum_{i=1}^N x_i y_I}{(\sum_{i=1}^N x_i)^2 - N  \sum_{i=1}^N x_i^2} \\
 b & = & \frac{AC-BD}{C^2 - NB} = \frac{\sum_{i=1}^N x_i \sum_{i=1}^N x_i y_i - \sum_{i=1}^N x_i^2  \sum_{i=1}^N y_i}{(\sum_{i=1}^N x_i)^2 - N  \sum_{i=1}^N x_i^2}
 \end{eqnarray*}
+}
 $$
 
 Rustのコードで表すと
