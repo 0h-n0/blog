@@ -27,8 +27,6 @@ plugins:
   - jekyll-scholar
 
 
-scholar:
-  style: mla
 
 target-blank:
     rel: nofollow
