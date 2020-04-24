@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "単回帰モデル"
+title: "単回帰モデル(WIP)"
 description: Simple Regression, Univariate Regression
 tags: 機械学習 回帰モデル
 ---
@@ -10,7 +10,7 @@ tags: 機械学習 回帰モデル
 　基本中の基本である単回帰モデルについて復習したいと思います。単回帰モデルは2変数の関係を特定するためのモデルです。例えば、身長を体重の関係を説明したい時などに適応できます。
 
 ## 単回帰モデルの解
-　あるデータセット$\color{#1F618D}{\mathcal{D}=\{(x_1, y_1), (x_2, y_2), ..., (x_N, y_N)\}}$が与えられ、$\color{#1F618D}{y=ax+b}$のモデルで表現する場合、このモデルを<span style="color:#148F77; font-family:Sawarabi Mincho;">単回帰モデル(simple regression)</span>と言います。数式からわかるように、二つのパラメータ$\color{#1F618D}{a}$と$\color{#1F618D}{b}$で$\color{#1F618D}{y}$を表現します。このパラメータを<span style="color:#148F77; font-family:Sawarabi Mincho;">回帰係数(regression coefficient)</span>と呼びます。パラメータを用いるモデルのことを<span style="color:#148F77; font-family:Sawarabi Mincho;">パラメトリックモデル(parametric model)</span>といいます。ところで、与えられたデータを最もよく表すモデルとはなんでしょうか？ここでは作成されたモデルとデータセットの誤差(残差: residual)を最小にするモデルを良いモデルだと考えます。そのために二乗誤差を最小にするパラメータを求めます(<span style="color:#148F77; font-family:Sawarabi Mincho;">最小二乗法(least-squares method)</span>)。数式で表すと
+　あるデータセット$\color{#1F618D}{\mathcal{D}=\{(x_1, y_1), (x_2, y_2), ..., (x_N, y_N)\}}$が与えられ、$\color{#1F618D}{y=ax+b}$のモデルで表現する場合、このモデルを<span style="color:#148F77; font-family:Sawarabi Mincho;">単回帰モデル(simple regression)</span>[^simple-regression]と言います。数式からわかるように、二つのパラメータ$\color{#1F618D}{a}$と$\color{#1F618D}{b}$で$\color{#1F618D}{y}$を表現します。このパラメータを<span style="color:#148F77; font-family:Sawarabi Mincho;">回帰係数(regression coefficient)</span>と呼びます。パラメータを用いるモデルのことを<span style="color:#148F77; font-family:Sawarabi Mincho;">パラメトリックモデル(parametric model)</span>といいます。ところで、与えられたデータを最もよく表すモデルとはなんでしょうか？ここでは作成されたモデルとデータセットの誤差(残差: residual)を最小にするモデルを良いモデルだと考えます。そのために二乗誤差を最小にするパラメータを求めます(<span style="color:#148F77; font-family:Sawarabi Mincho;">最小二乗法(least-squares method)</span>)[^least-squares-method][^convex][^gauss-markov]。数式で表すと
 
 $$
 \color{#1F618D}{
@@ -136,7 +136,7 @@ $$
 
 ## 単回帰モデルの中心化と正規化
 
-<span style="color:#148F77; font-family:Sawarabi Mincho;">中心化(zero-center)</span>と<span style="color:#148F77; font-family:Sawarabi Mincho;">正規化(normalize)</span>をすると単回帰モデルの解はどうなるでしょうか？式を整理するために、まず分散と共分散を以下のように定義します。
+　<span style="color:#148F77; font-family:Sawarabi Mincho;">中心化(zero-center)</span>と<span style="color:#148F77; font-family:Sawarabi Mincho;">正規化(normalize)</span>をすると単回帰モデルの解はどうなるでしょうか？式を整理するために、まず分散と共分散を以下のように定義します。
 
 $$
 \color{#1F618D}{
@@ -158,20 +158,22 @@ b & = & \frac{\sum_{i=1}^N x_i \sum_{i=1}^N x_i y_i - \sum_{i=1}^N x_i^2  \sum_{
 }
 $$
 
-ここで、$x'=\frac{x}{\sigma_x}$とすると、
+ここで、$\color{#1F618D}{x'=\frac{x}{\sigma_x}}$とすると、
 
 $$
 \color{#1F618D}{
 \begin{eqnarray*}
 a & = & \sigma_{x'y}\\
-b & = & \sum_{i=1}^N x_i\sigma_{x'y}\\
+b & = & \sigma_{x'y} \sum_{i=1}^N x_i
 \end{eqnarray*}
 }
 $$
 
-ここで最小二乗法を思い出すと、$\color{#1F618D}{a}$と$\color{#1F618D}{b}$を最小化することは$\color{#1F618D}{\sigma_{x'}}$を最小化していることにつながります。
+になります。最小二乗法を思い出すと、$\color{#1F618D}{a}$と$\color{#1F618D}{b}$を最小化することは$\color{#1F618D}{\sigma_{x'y}}$を最小化していることにつながります。
 
+## 推定量の性質
 
+## 外れ値(outlier)に対して
 
 ## 単回帰モデルの統計検定
 
@@ -181,14 +183,17 @@ let x = vec![1, 2, 3, 4, 5];
 let y = vec![10, 11, 13, 15, 18];
 ```
 
-
 ---
 ## 参考文献
 
 * [機械学習](https://www.amazon.co.jp/dp/4254122187/)
 * [ガウス過程と機械学習](https://www.amazon.co.jp/dp/B07QMMJJV8/)
 * [An Introduction to Statistical Learning](https://www.amazon.co.jp/dp/1461471370/)
+* [多変量解析入門――線形から非線形へ](https://www.amazon.co.jp/dp/4000056530)
 * [データはここから拝借](https://www.e-stat.go.jp/)
 
 ----
-[^1]: hoge
+[^simple-regression]: データが$\color{#1F618D}{\mathcal{D}=\{(x_1, y_1), (x_1, y_2), ..., (x_1, y_N)\}}$の場合、つまり$\color{#1F618D}{x}$が全て同じ値を取るときは、うまくフィッティングできません。
+[^least-squares-method]: 他にも<span style="color:#148F77; font-family:Sawarabi Mincho;">最小絶対値法(Least-absolute-value(LAV))</span>などがあります。これは$\color{#1F618D}{\sum \|\varepsilon_i\|}$を最小化します。最小絶対値法は、数学的に扱うのは厄介（計算機を使って解く）ですが外れ値に強い性質(Robust Regression)を持ちます。
+[^convex]: 最小二乗法はコスト関数が凸関数なので、必ず最小値を持ちます。
+[^gauss-markov]: 推定された$\color{#1F618D}{a}$と$\color{#1F618D}{b}$は<span style="color:#148F77; font-family:Sawarabi Mincho;">最良線形不偏推定量(Best Linear Uniased Estimator: BLUE)</span>です。
