@@ -10,7 +10,7 @@ tags: 機械学習 回帰モデル
 　基本中の基本である単回帰モデルについて復習したいと思います。単回帰モデルは2変数の関係を特定するためのモデルです。例えば、身長を体重の関係を説明したい時などに適応できます。
 
 ## 単回帰モデルの解
-　あるデータセット$\color{#1F618D}{\mathcal{D}=\{(x_1, y_1), (x_2, y_2), ..., (x_N, y_N)\}}$が与えられ、$\color{#1F618D}{y=ax+b}$のモデルで表現する場合、このモデルを<span style="color:#148F77; font-family:Sawarabi Mincho;">単回帰モデル(simple regression)</span>[^simple-regression]と言います。数式からわかるように、二つのパラメータ$\color{#1F618D}{a}$と$\color{#1F618D}{b}$で$\color{#1F618D}{y}$を表現します。このパラメータを<span style="color:#148F77; font-family:Sawarabi Mincho;">回帰係数(regression coefficient)</span>と呼びます。パラメータを用いるモデルのことを<span style="color:#148F77; font-family:Sawarabi Mincho;">パラメトリックモデル(parametric model)</span>といいます。ところで、与えられたデータを最もよく表すモデルとはなんでしょうか？ここでは作成されたモデルとデータセットの誤差(残差: residual)を最小にするモデルを良いモデルだと考えます。そのために二乗誤差を最小にするパラメータを求めます(<span style="color:#148F77; font-family:Sawarabi Mincho;">最小二乗法(least-squares method)</span>)[^least-squares-method][^convex][^gauss-markov]。数式で表すと
+　あるデータセット$\color{#1F618D}{\mathcal{D}=\{(x_1, y_1), (x_2, y_2), ..., (x_N, y_N)\}}$が与えられ、$\color{#1F618D}{y=ax+b}$のモデルで表現する場合、このモデルを<span style="color:#148F77; font-family:Sawarabi Mincho;">単回帰モデル(simple regression)</span>[^simple-regression]と言います。数式からわかるように、二つのパラメータ$\color{#1F618D}{a}$と$\color{#1F618D}{b}$で$\color{#1F618D}{y}$を表現します。このパラメータを<span style="color:#148F77; font-family:Sawarabi Mincho;">回帰係数(regression coefficient)</span>と呼びます。パラメータを用いるモデルのことを<span style="color:#148F77; font-family:Sawarabi Mincho;">パラメトリックモデル(parametric model)</span>といいます。ところで、与えられたデータを最もよく表すモデルとはなんでしょうか？ここでは作成されたモデルとデータセットの誤差(残差: residual)を最小にするモデルを良いモデルだと考えます。そのために二乗誤差を最小にするパラメータを求めます(<span style="color:#148F77; font-family:Sawarabi Mincho;">最小二乗法(least-squares method)</span>)[^least-squares-method] [^convex] [^gauss-markov]。数式で表すと
 
 $$
 \color{#1F618D}{
@@ -173,6 +173,8 @@ $$
 
 ## 推定量の性質
 
+　こんな単純なモデルでも推定された$\color{#1F618D}{a}$と$\color{#1F618D}{b}$がどれほど妥当か？つまり有意かを検定したいと思うのは人の常です。
+
 ## 外れ値(outlier)に対して
 
 ## 単回帰モデルの統計検定
@@ -196,4 +198,4 @@ let y = vec![10, 11, 13, 15, 18];
 [^simple-regression]: データが$\color{#1F618D}{\mathcal{D}=\{(x_1, y_1), (x_1, y_2), ..., (x_1, y_N)\}}$の場合、つまり$\color{#1F618D}{x}$が全て同じ値を取るときは、うまくフィッティングできません。
 [^least-squares-method]: 他にも<span style="color:#148F77; font-family:Sawarabi Mincho;">最小絶対値法(Least-absolute-value(LAV))</span>などがあります。これは$\color{#1F618D}{\sum \|\varepsilon_i\|}$を最小化します。最小絶対値法は、数学的に扱うのは厄介（計算機を使って解く）ですが外れ値に強い性質(Robust Regression)を持ちます。
 [^convex]: 最小二乗法はコスト関数が凸関数なので、必ず最小値を持ちます。
-[^gauss-markov]: 推定された$\color{#1F618D}{a}$と$\color{#1F618D}{b}$は<span style="color:#148F77; font-family:Sawarabi Mincho;">最良線形不偏推定量(Best Linear Uniased Estimator: BLUE)</span>です。
+[^gauss-markov]: 推定された$\color{#1F618D}{a}$と$\color{#1F618D}{b}$は<span style="color:#148F77; font-family:Sawarabi Mincho;">最良線形不偏推定量(Best Linear Uniased Estimator: BLUE)</span>です。そのままですが、最小二乗法は不偏推定量のうち最良のもの推定することができます。これはガウス・マルコフの定理として知られいます。証明は『統計学入門』(東京大学出版会)のp275などを参考にしてください。
