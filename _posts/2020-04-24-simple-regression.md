@@ -26,7 +26,7 @@ $$
 $$
 \color{#1F618D}{
 \begin{eqnarray*}
-    \varepsilon_i = (y_1 - y)^2
+    \varepsilon_i = (y_i - \hat{y}_i)^2
 \end{eqnarray*}
 }
 $$
@@ -141,7 +141,7 @@ $$
 $$
 \color{#1F618D}{
 \begin{eqnarray*}
-\sigma_x & = & \frac{1}{N} \sum_{i=1}^N x_i^2 - \left(\frac{1}{N}\sum_{i=1}^N x_i \right)^2  \\
+\sigma_{xx} & = & \frac{1}{N} \sum_{i=1}^N x_i^2 - \left(\frac{1}{N}\sum_{i=1}^N x_i \right)^2  \\
 \sigma_{xy} & = & \frac{1}{N}\sum_{i=1}^N x_i y_i - \frac{1}{N}\sum_{i=1}^N x_i \frac{1}{N}\sum_{i=1}^N y_i
 \end{eqnarray*}
 }
@@ -152,13 +152,13 @@ $$
 $$
 \color{#1F618D}{
 \begin{eqnarray*}
-a & = & \frac{\sum_{i=1}^N x_i \sum_{i=1}^N y_i - N  \sum_{i=1}^N x_i y_i}{(\sum_{i=1}^N x_i)^2 - N  \sum_{i=1}^N x_i^2} = \frac{\sigma_{xy}}{\sigma_x}\\
-b & = & \frac{\sum_{i=1}^N x_i \sum_{i=1}^N x_i y_i - \sum_{i=1}^N x_i^2  \sum_{i=1}^N y_i}{(\sum_{i=1}^N x_i)^2 - N  \sum_{i=1}^N x_i^2} = \frac{\sum_{i=1}^N x_i\sigma_{xy}}{\sigma_x}\\
+a & = & \frac{\sum_{i=1}^N x_i \sum_{i=1}^N y_i - N  \sum_{i=1}^N x_i y_i}{(\sum_{i=1}^N x_i)^2 - N  \sum_{i=1}^N x_i^2} = \frac{\sigma_{xy}}{\sigma_{xx}}\\
+b & = & \frac{\sum_{i=1}^N x_i \sum_{i=1}^N x_i y_i - \sum_{i=1}^N x_i^2  \sum_{i=1}^N y_i}{(\sum_{i=1}^N x_i)^2 - N  \sum_{i=1}^N x_i^2} = \frac{\sum_{i=1}^N x_i\sigma_{xy}}{\sigma_{xx}}\\
 \end{eqnarray*}
 }
 $$
 
-ここで、$\color{#1F618D}{x'=\frac{x}{\sigma_x}}$とすると、
+ここで、$\color{#1F618D}{x'=\frac{x}{\sigma_{xx}}}$とすると、
 
 $$
 \color{#1F618D}{
@@ -173,11 +173,47 @@ $$
 
 ## 推定量の性質
 
-　こんな単純なモデルでも推定された$\color{#1F618D}{a}$と$\color{#1F618D}{b}$がどれほど妥当か？つまり有意かを検定したいと思うのは人の常です。
+　推定された$\color{#1F618D}{a}$と$\color{#1F618D}{b}$は<span style="color:#148F77; font-family:Sawarabi Mincho;">不偏推定量(unbiased estimator)</span>となります。実際に不偏推定量になっているかは、以下のように計算で確かめることができます。[^unbiased-estimator]
+
+$$
+\color{#1F618D}{
+\begin{eqnarray*}
+a & = & \frac{\sum_{i=1}^N x_i y_i  - \frac{1}{N}\sum_{i=1}^N x_i \sum_{i=1}^N y_i}{\sigma_{xx}} \\
+  & = & \sum_{i=1}^N\left(\frac{ x_i - \mathbf{E}_{sample}[x]}{\sigma_{xx}} \right) y_i = \sum_{i=1}^N c_i y_i\\
+\end{eqnarray*}
+}
+$$
+
+上記の$\color{#1F618D}{a}$にたいして母平均をとります。
+
+$$
+\color{#1F618D}{
+\begin{eqnarray*}
+\mathbf{E}[a] & = & \mathbf{E}[\sum_{i=1}^N c_i y_i] = \sum_{i=1}^N c_i \mathbf{E}[y_i] \\
+ & = & \sum_{i=1}^N c_i (\bar{a} x_i + \bar{b}) = \bar{a} \sum_{i=1}^N c_i  x_i + \bar{b} \sum_{i=1}^N c_i\\
+\end{eqnarray*}
+}
+$$
+
+上記の$\color{#1F618D}{\bar{a}}$と$\color{#1F618D}{\bar{b}}$は真の$\color{#1F618D}{a}$と$\color{#1F618D}{b}$となります。[^ture-parameter] $\color{#1F618D}{c_i}$に関わる部分は以下のようになります。
+
+$$
+\color{#1F618D}{
+\begin{eqnarray*}
+\sum_{i=1}^N c_i x_i & = & \sum_{i=1}^N\left(\frac{ x_i - \mathbf{E}_{sample}[x]}{\sigma_{xx}} \right) x_i = \frac{1}{\sigma_{xx}} \sum_{i=1}^N \left( x_i x_i - x_i \mathbf{E}_{sample}[x] \right)\\
+\sum_{i=1}^N c_i & = & \sum_{i=1}^N\left(\frac{ x_i - \mathbf{E}_{sample}[x]}{\sigma_{xx}} \right) = \frac{1}{\sigma_{xx}} \sum_{i=1}^N \left( x_i - N \mathbf{E}_{sample}[x] \right) \\
+ & = & \frac{1}{\sigma_{xx}}\left( \sum_{i=1}^N x_i - \frac{N}{N} \sum_{i=1}^N x_i \right) = 0
+\end{eqnarray*}
+}
+$$
+
 
 ## 外れ値(outlier)に対して
 
 ## 単回帰モデルの統計検定
+
+　こんな単純なモデルでも推定された$\color{#1F618D}{a}$と$\color{#1F618D}{b}$がどれほど妥当か？つまり有意かを検定したいと思うのは人の常です。
+
 
 Rustのコードで表すと
 ```rust
@@ -199,3 +235,5 @@ let y = vec![10, 11, 13, 15, 18];
 [^least-squares-method]: 他にも<span style="color:#148F77; font-family:Sawarabi Mincho;">最小絶対値法(Least-absolute-value(LAV))</span>などがあります。これは$\color{#1F618D}{\sum \|\varepsilon_i\|}$を最小化します。最小絶対値法は、数学的に扱うのは厄介（計算機を使って解く）ですが外れ値に強い性質(Robust Regression)を持ちます。
 [^convex]: 最小二乗法はコスト関数が凸関数なので、必ず最小値を持ちます。
 [^gauss-markov]: 推定された$\color{#1F618D}{a}$と$\color{#1F618D}{b}$は<span style="color:#148F77; font-family:Sawarabi Mincho;">最良線形不偏推定量(Best Linear Uniased Estimator: BLUE)</span>です。そのままですが、最小二乗法は不偏推定量のうち最良のもの推定することができます。これはガウス・マルコフの定理として知られいます。証明は『統計学入門』(東京大学出版会)のp275などを参考にしてください。
+[^unbiased-estimator]: 標本平均と母平均が一致することを示します。
+[^ture-parameter]: ノイズが正規分布に従うとすると、母平均をとるとノイズが消されるのでもとまるパラメータは真のパラメータとなります。
