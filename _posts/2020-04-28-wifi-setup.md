@@ -5,7 +5,7 @@ description: Simple Regression, Univariate Regression
 tags: Wifi Setup
 ---
 
-　Wifiアダプターーを買ってきて公式ドライバーが
+　UbuntuOSに外付けのWifiカードを接続したいときがあります。そのまま刺しただけではハードウェアを認識せず、上手く行きません。以下のように必要なドライバー類をアップデートすれば正常に使用することができます。
 
 ```shell
 $ sudo apt install linux-oem-osp1 linux-firmware
