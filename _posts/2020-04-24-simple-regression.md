@@ -153,7 +153,7 @@ $$
 \color{#1F618D}{
 \begin{eqnarray*}
 a & = & \frac{\sum_{i=1}^N x_i \sum_{i=1}^N y_i - N  \sum_{i=1}^N x_i y_i}{(\sum_{i=1}^N x_i)^2 - N  \sum_{i=1}^N x_i^2} = \frac{\sigma_{xy}}{\sigma_{xx}}\\
-b & = & \frac{\sum_{i=1}^N x_i \sum_{i=1}^N x_i y_i - \sum_{i=1}^N x_i^2  \sum_{i=1}^N y_i}{(\sum_{i=1}^N x_i)^2 - N  \sum_{i=1}^N x_i^2} = \frac{\sum_{i=1}^N x_i\sigma_{xy}}{\sigma_{xx}}\\
+b & = & \frac{\sum_{i=1}^N x_i \sum_{i=1}^N x_i y_i - \sum_{i=1}^N x_i^2  \sum_{i=1}^N y_i}{(\sum_{i=1}^N x_i)^2 - N  \sum_{i=1}^N x_i^2} = \frac{\sum_{i=1}^N x_i \sum_{i=1}^N x_i y_i - \sum_{i=1}^N x_i^2  \sum_{i=1}^N y_i}{\sigma_{xx}}\\
 \end{eqnarray*}
 }
 $$
@@ -164,7 +164,7 @@ $$
 \color{#1F618D}{
 \begin{eqnarray*}
 a & = & \sigma_{x'y}\\
-b & = & \sigma_{x'y} \sum_{i=1}^N x_i
+b & = & \sum_{i=1}^N x_i' \sum_{i=1}^N x_i' y_i - \sum_{i=1}^N x_i'^2  \sum_{i=1}^N y_i
 \end{eqnarray*}
 }
 $$
@@ -178,8 +178,8 @@ $$
 $$
 \color{#1F618D}{
 \begin{eqnarray*}
-a & = & \frac{\sum_{i=1}^N x_i y_i  - \frac{1}{N}\sum_{i=1}^N x_i \sum_{i=1}^N y_i}{\sigma_{xx}} \\
-  & = & \sum_{i=1}^N\left(\frac{ x_i - \mathbf{E}_{sample}[x]}{\sigma_{xx}} \right) y_i = \sum_{i=1}^N c_i y_i\\
+a & = & \frac{1}{N}\frac{\sum_{i=1}^N x_i y_i  - \frac{1}{N}\sum_{i=1}^N x_i \sum_{i=1}^N y_i}{\sigma_{xx}} \\
+  & = & \frac{1}{N}\sum_{i=1}^N\left(\frac{ x_i - \mathbf{E}_{sample}[x]}{\sigma_{xx}} \right) y_i = \frac{1}{N}\sum_{i=1}^N c_i y_i\\
 \end{eqnarray*}
 }
 $$
@@ -188,10 +188,11 @@ $$
 
 $$
 \color{#1F618D}{
-\begin{eqnarray*}
-\mathbf{E}[a] & = & \mathbf{E}[\sum_{i=1}^N c_i y_i] = \sum_{i=1}^N c_i \mathbf{E}[y_i] \\
- & = & \sum_{i=1}^N c_i (\bar{a} x_i + \bar{b}) = \bar{a} \sum_{i=1}^N c_i  x_i + \bar{b} \sum_{i=1}^N c_i\\
-\end{eqnarray*}
+\begin{eqnarray}
+\label{eqn:mean}
+\mathbf{E}[a] & = & \mathbf{E}[\frac{1}{N}\sum_{i=1}^N c_i y_i] = \frac{1}{N}\sum_{i=1}^N c_i \mathbf{E}[y_i] \\
+ & = & \frac{1}{N}\sum_{i=1}^N c_i (\bar{a} x_i + \bar{b}) = \frac{\bar{a}}{N} \sum_{i=1}^N c_i  x_i + \frac{\bar{b}}{N} \sum_{i=1}^N c_i\\
+\end{eqnarray}
 }
 $$
 
@@ -200,9 +201,33 @@ $$
 $$
 \color{#1F618D}{
 \begin{eqnarray*}
-\sum_{i=1}^N c_i x_i & = & \sum_{i=1}^N\left(\frac{ x_i - \mathbf{E}_{sample}[x]}{\sigma_{xx}} \right) x_i = \frac{1}{\sigma_{xx}} \sum_{i=1}^N \left( x_i x_i - x_i \mathbf{E}_{sample}[x] \right)\\
-\sum_{i=1}^N c_i & = & \sum_{i=1}^N\left(\frac{ x_i - \mathbf{E}_{sample}[x]}{\sigma_{xx}} \right) = \frac{1}{\sigma_{xx}} \sum_{i=1}^N \left( x_i - N \mathbf{E}_{sample}[x] \right) \\
- & = & \frac{1}{\sigma_{xx}}\left( \sum_{i=1}^N x_i - \frac{N}{N} \sum_{i=1}^N x_i \right) = 0
+\frac{1}{N}\sum_{i=1}^N c_i x_i & = & \frac{1}{N}\sum_{i=1}^N\left(\frac{ x_i - \mathbf{E}_{sample}[x]}{\sigma_{xx}} \right) x_i = \frac{1}{\sigma_{xx}} \sum_{i=1}^N \left( \frac{x_i x_i}{N} - x_i \frac{\mathbf{E}_{sample}[x]}{N} \right)\\
+& = & \frac{1}{\sigma_{xx}} \{ \sum_{i=1}^N \left(\frac{x_i x_i}{N}\right) -  \mathbf{E}_{sample}[x]\sum_{i=1}^N \frac{x_i}{N} \} \\
+& = & \frac{1}{\sigma_{xx}} \{ \mathbf{E}_{sample}[x^2] -  (\mathbf{E}_{sample}[x])^2 \} = 1\\
+
+\frac{1}{N}\sum_{i=1}^N c_i & = & \frac{1}{N}\sum_{i=1}^N\left(\frac{ x_i - \mathbf{E}_{sample}[x]}{\sigma_{xx}} \right) = \frac{1}{\sigma_{xx}} \sum_{i=1}^N \left( \frac{x_i}{N} - \mathbf{E}_{sample}[x] \right) \\
+ & = & \frac{1}{N\sigma_{xx}}\left( \mathbf{E}_{sample}[x] - \mathbf{E}_{sample}[x]\right) = 0
+\end{eqnarray*}
+}
+$$
+
+となります。これを$\ref{eqn:mean}$に代入すると、
+
+$$
+\color{#1F618D}{
+\begin{eqnarray*}
+\mathbf{E}[a] & = & \frac{\bar{a}}{N} \sum_{i=1}^N c_i  x_i + \frac{\bar{b}}{N} \sum_{i=1}^N c_i = \bar{a} \\
+\end{eqnarray*}
+}
+$$
+
+よって、$\color{#1F618D}{a}$は母平均とサンプル平均が一致するので$\color{#1F618D}{a}$は不偏推定量となります。$\color{#1F618D}{b}$についても同様に計算することが出来ます。
+
+$$
+\color{#1F618D}{
+\begin{eqnarray*}
+b & = & \frac{1}{N}\frac{\sum_{i=1}^N x_i y_i  - \frac{1}{N}\sum_{i=1}^N x_i \sum_{i=1}^N y_i}{\sigma_{xx}} \\
+  & = & \frac{1}{N}\sum_{i=1}^N\left(\frac{ x_i - \mathbf{E}_{sample}[x]}{\sigma_{xx}} \right) y_i = \frac{1}{N}\sum_{i=1}^N c_i y_i\\
 \end{eqnarray*}
 }
 $$
@@ -216,6 +241,7 @@ $$
 \end{eqnarray*}
 }
 $$
+
 
 
 
@@ -247,4 +273,4 @@ let y = vec![10, 11, 13, 15, 18];
 [^convex]: 最小二乗法はコスト関数が凸関数なので、必ず最小値を持ちます。
 [^gauss-markov]: 推定された$\color{#1F618D}{a}$と$\color{#1F618D}{b}$は<span style="color:#148F77; font-family:Sawarabi Mincho;">最良線形不偏推定量(Best Linear Uniased Estimator: BLUE)</span>です。そのままですが、最小二乗法は不偏推定量のうち最良のもの推定することができます。これはガウス・マルコフの定理として知られいます。証明は『統計学入門』(東京大学出版会)のp275などを参考にしてください。
 [^unbiased-estimator]: 標本平均と母平均が一致することを示します。
-[^ture-parameter]: ノイズが正規分布に従うとすると、母平均をとるとノイズが消されるのでもとまるパラメータは真のパラメータとなります。
+[^ture-parameter]: ノイズが正規分布に従うとすると、母平均をとるとノイズが消されます。パラメータは真のパラメータと一致します。
