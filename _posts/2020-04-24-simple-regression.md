@@ -4,9 +4,6 @@ title: "単回帰モデル(WIP)"
 description: Simple Regression, Univariate Regression
 tags: 機械学習 回帰モデル
 ---
-<span style="font-family:Sawarabi Gothic;">
-
-
 　基本中の基本である単回帰モデルについて復習したいと思います。単回帰モデルは2変数の関係を特定するためのモデルです。例えば、身長を体重の関係を説明したい時などに適応できます。
 
 ## 単回帰モデルの解
@@ -245,9 +242,11 @@ $$
 \end{eqnarray*}
 }
 $$
+
 以上より、サンプル平均と母平均が一致することを確かめることが出来ます。
 
 ## 外れ値(outlier)に対して
+
 
 ## 単回帰モデルの統計検定
 
