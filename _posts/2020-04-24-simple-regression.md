@@ -207,6 +207,17 @@ $$
 }
 $$
 
+\color{#1F618D}{b}$についても同様に母平均をとり不偏推定量となることを確認することが出来ます。
+
+$$
+\color{#1F618D}{
+\begin{eqnarray*}
+\mathbf{E}[b] & = & \mathbf{E}[\sum_{i=1}^N c_i y_i] = \sum_{i=1}^N c_i \mathbf{E}[y_i]
+\end{eqnarray*}
+}
+$$
+
+
 
 ## 外れ値(outlier)に対して
 
