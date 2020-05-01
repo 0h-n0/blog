@@ -153,7 +153,7 @@ $$
 \color{#1F618D}{
 \begin{eqnarray*}
 a & = & \frac{\sum_{i=1}^N x_i \sum_{i=1}^N y_i - N  \sum_{i=1}^N x_i y_i}{(\sum_{i=1}^N x_i)^2 - N  \sum_{i=1}^N x_i^2} = \frac{\sigma_{xy}}{\sigma_{xx}}\\
-b & = & \frac{\sum_{i=1}^N x_i \sum_{i=1}^N x_i y_i - \sum_{i=1}^N x_i^2  \sum_{i=1}^N y_i}{(\sum_{i=1}^N x_i)^2 - N  \sum_{i=1}^N x_i^2} = \frac{\sum_{i=1}^N x_i \sum_{i=1}^N x_i y_i - \sum_{i=1}^N x_i^2  \sum_{i=1}^N y_i}{\sigma_{xx}}\\
+b & = & \frac{\sum_{i=1}^N x_i \sum_{i=1}^N x_i y_i - \sum_{i=1}^N x_i^2  \sum_{i=1}^N y_i}{(\sum_{i=1}^N x_i)^2 - N  \sum_{i=1}^N x_i^2} = \frac{\sum_{i=1}^N x_i^2  \sum_{i=1}^N y_i - \sum_{i=1}^N x_i \sum_{i=1}^N x_i y_i}{N^2 \sigma_{xx}}\\
 \end{eqnarray*}
 }
 $$
@@ -164,7 +164,7 @@ $$
 \color{#1F618D}{
 \begin{eqnarray*}
 a & = & \sigma_{x'y}\\
-b & = & \sum_{i=1}^N x_i' \sum_{i=1}^N x_i' y_i - \sum_{i=1}^N x_i'^2  \sum_{i=1}^N y_i
+b & = & \frac{\sum_{i=1}^N x_i'^2  \sum_{i=1}^N y_i - \sum_{i=1}^N x_i' \sum_{i=1}^N x_i' y_i}{N^2}
 \end{eqnarray*}
 }
 $$
@@ -173,7 +173,7 @@ $$
 
 ## 推定量の性質
 
-　推定された$\color{#1F618D}{a}$と$\color{#1F618D}{b}$は<span style="color:#148F77; font-family:Sawarabi Mincho;">不偏推定量(unbiased estimator)</span>となります。実際に不偏推定量になっているかは、以下のように計算で確かめることができます。[^unbiased-estimator]
+　推定された$\color{#1F618D}{a}$と$\color{#1F618D}{b}$は<span style="color:#148F77; font-family:Sawarabi Mincho;">不偏推定量(unbiased estimator)</span>となります。実際に不偏推定量になっているかは、以下のように計算で確かめることができます。[^unbiased-estimator]まずは、計算の見通しをよくするために整理します。
 
 $$
 \color{#1F618D}{
@@ -184,7 +184,7 @@ a & = & \frac{1}{N}\frac{\sum_{i=1}^N x_i y_i  - \frac{1}{N}\sum_{i=1}^N x_i \su
 }
 $$
 
-上記の$\color{#1F618D}{a}$にたいして母平均をとります。
+上記の$\color{#1F618D}{a}$にたいして母平均をとります。ここで真の推定量(母平均をとったときの推定量)を$\color{#1F618D}{\bar{a}}$と$\color{#1F618D}{\bar{b}}$とします。
 
 $$
 \color{#1F618D}{
@@ -222,28 +222,30 @@ $$
 $$
 
 よって、$\color{#1F618D}{a}$は母平均とサンプル平均が一致するので$\color{#1F618D}{a}$は不偏推定量となります。$\color{#1F618D}{b}$についても同様に計算することが出来ます。
+計算を簡単にするために、$\color{#1F618D}{b}$を$\color{#1F618D}{a}$で表現します。(平均を$\bar x = \sum_i^N x_i$と表記します。)
 
 $$
 \color{#1F618D}{
 \begin{eqnarray*}
-b & = & \frac{1}{N}\frac{\sum_{i=1}^N x_i y_i  - \frac{1}{N}\sum_{i=1}^N x_i \sum_{i=1}^N y_i}{\sigma_{xx}} \\
-  & = & \frac{1}{N}\sum_{i=1}^N\left(\frac{ x_i - \mathbf{E}_{sample}[x]}{\sigma_{xx}} \right) y_i = \frac{1}{N}\sum_{i=1}^N c_i y_i\\
+b & = & \frac{1}{N^2 \sigma_{xx}} \left( \sum_{i=1}^N x_i^2  \sum_{i=1}^N y_i - \sum_{i=1}^N x_i \sum_{i=1}^N x_i y_i  \right)\\
+& = & \frac{1}{\sigma_{xx}} \left( \overline{x^2} \bar{y} - \bar{x} \overline{xy}\right)\\
+& = & \frac{1}{\sigma_{xx}} \left(  \overline{x^2} \bar{y} - \bar{x} \overline{xy} + \bar{x}^2\bar{y} - \bar{x}^2\bar{y} \right) \\
+& = & \frac{1}{\sigma_{xx}} \left\{ \bar{y} \left( \overline{x^2} - \bar{x}^2 \right) - \bar{x} \left( \overline{xy} - \bar{x}\bar{y} \right)\right\} \\
+& = & \frac{1}{\sigma_{xx}} \left( \bar{y} \sigma_{xx} - \bar{x} \sigma_{xy}\right) = \bar{y} - \bar{x} \frac{\sigma_{xy}}{\sigma_{xx}} = \bar{y} - \bar{x} a \\
 \end{eqnarray*}
 }
 $$
 
-\color{#1F618D}{b}$についても同様に母平均をとり不偏推定量となることを確認することが出来ます。
+上記の結果は、そのままといったらそのままですね。続いて$\color{#1F618D}{b}$について母平均をとります
 
 $$
 \color{#1F618D}{
 \begin{eqnarray*}
-\mathbf{E}[b] & = & \mathbf{E}[\sum_{i=1}^N c_i y_i] = \sum_{i=1}^N c_i \mathbf{E}[y_i]
+\mathbf{E}[b] & = & \mathbf{E}[\bar{y} - \bar{x} a] = \mathbf{E}[a \bar x + b  - \bar{x} a] = \bar b
 \end{eqnarray*}
 }
 $$
-
-
-
+以上より、サンプル平均と母平均が一致することを確かめることが出来ます。
 
 ## 外れ値(outlier)に対して
 
