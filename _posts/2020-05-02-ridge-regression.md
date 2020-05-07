@@ -5,9 +5,52 @@ description: Linear Regression, Univariate Regression
 tags: 機械学習 回帰モデル
 ---
 
-　前回のポストで単回帰モデルを復習したので、次に重回帰モデルしたいと思います。重回帰モデルは単回帰モデルのパラメータを増やしたモデルです。単回帰モデルが2変数の関係を表現したのに対して、重回帰モデルは3変数以上の関係を表現するモデルです。例えば、体重と身長だけでなく、年齢なども追加することができます。
+　重回帰モデルでは、パラメータ数が増えると逆行列の正方行列の次元がそれに比例して増えるので逆行列の存在しにくくなってしまいます。そのために正則化項を加えることでモデルを安定化させます。それがリッジ回帰モデルです。
 
 ## リッジ回帰モデルの解
+
+リッジ回帰の二乗誤差は、重回帰モデルの二乗誤差に$\color{#1F618D}{\lambda\mathbf{w}^T\mathbf{w}}$を付け加えてモデルになります。この項を導入することでそれぞれのパラメータが大きくなり過ぎることを抑制します。
+
+$$
+\color{#1F618D}{
+\begin{eqnarray*}
+    \varepsilon_{mean} =  \frac{1}{N}(\mathbf{y} - X\mathbf{w})^T(\mathbf{y} - X\mathbf{w}) + \lambda\mathbf{w}^T\mathbf{w}
+\end{eqnarray*}
+}
+$$
+
+$$
+\color{#1F618D}{
+\begin{eqnarray*}
+    \frac{\partial\varepsilon_{mean}}{\partial \mathbf{w}} = -\frac{2}{N} X^T (\mathbf{y} - X\mathbf{w})=0
+\end{eqnarray*}
+}
+$$
+
+となります。上記の方程式は
+
+$$
+\color{#1F618D}{
+\begin{eqnarray*}
+    && X^T (\mathbf{y} - X\mathbf{w}) + \lambda \mathbf{w}=0 \\
+    &\rightarrow& X^T\mathbf{y} - (X^TX + \lambda \mathbf{E})\mathbf{w} = 0 \\
+    &\rightarrow& (X^TX + \lambda \mathbf{E})\mathbf{w} = X^T\mathbf{y} \\
+   &\rightarrow& \mathbf{w} = (X^TX + \lambda \mathbf{E})^{-1}X^T\mathbf{y} \\
+\end{eqnarray*}
+}
+$$
+
+となり、解は
+
+$$
+\color{#1F618D}{
+\begin{eqnarray*}
+   \mathbf{w} = (X^TX + \lambda \mathbf{E})^{-1}X^T\mathbf{y}
+\end{eqnarray*}
+}
+$$
+
+となります。よって対角成分に$\color{#1F618D}{\lambda}$が足されているので逆行列が存在することが担保されます。
 
 ---
 ## 参考文献
