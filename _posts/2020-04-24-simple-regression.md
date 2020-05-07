@@ -262,7 +262,7 @@ let y = vec![10, 11, 13, 15, 18];
 ---
 ## 参考文献
 
-* [機械学習](https://www.amazon.co.jp/dp/4254122187/)
+* [機械学習 ─データを読み解くアルゴリズムの技法─](https://amzn.to/2xpI5NV)
 * [ガウス過程と機械学習](https://www.amazon.co.jp/dp/B07QMMJJV8/)
 * [An Introduction to Statistical Learning](https://www.amazon.co.jp/dp/1461471370/)
 * [多変量解析入門――線形から非線形へ](https://www.amazon.co.jp/dp/4000056530)
