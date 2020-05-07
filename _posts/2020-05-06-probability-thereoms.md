@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "確率で登場するいくつかの不等式"
+title: "確率論で登場するいくつかの不等式"
 description: Linear Regression, Univariate Regression
 tags: 機械学習 回帰モデル
 ---
