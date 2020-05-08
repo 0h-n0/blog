@@ -9,6 +9,50 @@ tags: 機械学習 回帰モデル
 
 ## 線形回帰モデルの解
 
+
+$$
+\color{#1F618D}{
+\begin{eqnarray*}
+    \varepsilon_{mean} =  \frac{1}{N}(\mathbf{y} - X\mathbf{w})^T(\mathbf{y} - X\mathbf{w}) + \lambda\mathbf{w}^T\mathbf{w}
+\end{eqnarray*}
+}
+$$
+
+$$
+\color{#1F618D}{
+\begin{eqnarray*}
+    \frac{\partial\varepsilon_{mean}}{\partial \mathbf{w}} = -\frac{2}{N} X^T (\mathbf{y} - X\mathbf{w})=0
+\end{eqnarray*}
+}
+$$
+
+となります。上記の方程式は
+
+$$
+\color{#1F618D}{
+\begin{eqnarray*}
+    && X^T (\mathbf{y} - X\mathbf{w}) + \lambda \mathbf{w}=0 \\
+    &\rightarrow& X^T\mathbf{y} - (X^TX + \lambda \mathbf{E})\mathbf{w} = 0 \\
+    &\rightarrow& (X^TX + \lambda \mathbf{E})\mathbf{w} = X^T\mathbf{y} \\
+   &\rightarrow& \mathbf{w} = (X^TX + \lambda \mathbf{E})^{-1}X^T\mathbf{y} \\
+\end{eqnarray*}
+}
+$$
+
+となり、解は
+
+$$
+\color{#1F618D}{
+\begin{eqnarray*}
+   \mathbf{w} = (X^TX + \lambda \mathbf{E})^{-1}X^T\mathbf{y}
+\end{eqnarray*}
+}
+$$
+
+となります。よって対角成分に$\color{#1F618D}{\lambda}$が足されているので逆行列が存在することが担保されます。
+
+
+
 ---
 ## 参考文献
 
