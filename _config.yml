@@ -30,3 +30,7 @@ target-blank:
     rel: nofollow
 
 header_page_refs: ['now', 'about', 'contact']
+
+kramdown:
+  math_engine: mathjax
+  syntax_highlighter: rouge
